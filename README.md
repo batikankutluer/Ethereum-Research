@@ -1,4 +1,4 @@
-![Ethereum banner](https://red-past-bonobo-233.mypinata.cloud/ipfs/bafybeicwzn5a66hfpvakoz2jsgl7beyve25xf6jomip3rubkw5beg6wryq)
+![Ethereum banner](https://red-past-bonobo-233.mypinata.cloud/ipfs/bafybeihtbemiz3ifdcy4spgx7272c5y5jdn52nfrh4dvcoz6erqr4jwgz4)
 
 # Batıkan Kutluer'in Ethereum Araştırmaları
 
