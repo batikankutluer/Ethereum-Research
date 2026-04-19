@@ -28,6 +28,12 @@ Ethereum'un normal işlem havuzundan ayrı çalışan, `UserOperation` nesneleri
 ### Batch İşlem / Toplu İşlem
 Birden fazla çağrının tek kullanıcı eylemiyle veya tek zincir üstü işlemle yapılmasıdır. AA cüzdanlarının en çok kullanılan UX kazanımlarından biridir.
 
+### BLOB
+Kısa süre saklanan ama ucuz data availability alanını temsil eden veri paketidir. Özellikle [[Precompiles/EIP, RIP & ERC/EIP-4844|EIP-4844]] ile rollup verisini calldata dışında taşımak için kullanılır.
+
+### BLS12-381
+Pairing tabanlı modern kriptografi için kullanılan eğri ailesidir. Ethereum execution layer tarafında bunun yerleşik karşılığı [[Precompiles/EIP, RIP & ERC/EIP-2537|EIP-2537]] ile gelir.
+
 ### Bundler
 [[ERC-4337]] dünyasında `UserOperation` toplayan, bunları simüle eden ve zincire gönderen aktördür. Teknik olarak bir nevi özel işlem toplayıcıdır.
 
@@ -93,6 +99,11 @@ Bir işlemden önce veya sonra otomatik çalışan genişletme noktasıdır. Öz
 ### Invoker
 [[EIP-3074]] bağlamında, EOA'nın yetki verdiği ve onun adına işlem yapan kontrattır. Bu terim özellikle `AUTH` ve `AUTHCALL` tasarımında önemlidir.
 
+## K
+
+### KZG
+Blob verisine dair commitment ve doğrulama modelini kuran polynomial commitment ailesidir. Execution layer tarafında bunun en görünür yansıması [[Precompiles/EIP, RIP & ERC/EIP-4844|EIP-4844]] içindeki point evaluation precompile'ıdır.
+
 ## M
 
 ### Mempool
@@ -129,7 +140,7 @@ Kullanıcının token onayını ayrı bir zincir üstü `approve` işlemi yerine
 Bir akıllı hesaba sonradan davranış ekleyen modüldür. [[ERC-6900]] ekosisteminin temel kavramlarından biridir.
 
 ### Precompile / Ön Derleme
-EVM içinde özel adreslerde sunulan, sık kullanılan ama pahalı hesaplamaları daha verimli yapan yerleşik işlemlerdir. [[EIP-7212]] bu sınıfa yeni bir örnek önerir.
+EVM içinde özel adreslerde sunulan, sık kullanılan ama pahalı hesaplamaları daha verimli yapan yerleşik işlemlerdir. Genel harita için [[Precompiles/Precompiles EIPs|Precompiles EIPs]] notuna bakılabilir; modern örnekler arasında [[Precompiles/EIP, RIP & ERC/EIP-2537|EIP-2537]], [[Precompiles/EIP, RIP & ERC/EIP-4844|EIP-4844]] ve [[EIP-7212]] bulunur.
 
 ### Provider Discovery
 Bir dapp'in kullanıcının tarayıcısındaki wallet provider'ları bulma sürecidir. Tek provider varsayımından çoklu provider keşfine geçişte [[EIP-6963]] öne çıkar.
