@@ -3,6 +3,13 @@
 Bu not, vault içindeki tüm araştırmalar için genel çalışma şemasını tanımlar.
 Amaç: her yeni konuda sıfırdan dağınık notlar açmak yerine, aynı mantıkla ilerlemek ve araştırma çıktısını kalıcı bilgiye dönüştürmek.
 
+Bu planın varsayılan yazım stili, vault içindeki iki ana araştırma alanından türetilir:
+
+- `Account Abstraction`
+- `Wallet & Transaction UX`
+
+Bundan sonra yeni araştırmalar mümkün olduğunca bu iki klasördeki yapı ve yazım düzenini örnek almalıdır.
+
 ## 1. Amaç
 
 - araştırmayı soru odaklı başlatmak
@@ -43,6 +50,14 @@ Kısacası hedef, "tek soru -> güncellenmiş ve kullanılabilir bütün çıkt�
 
 ## 4. Not Türleri
 
+Bu vault'ta pratikte en sık kullanılan omurga şudur:
+
+1. konu klasörünün kökünde bir indeks notu
+2. ilgili standart / referans notlarının bulunduğu bir alt klasör
+3. gerektiğinde sözlük bağlantıları ve çapraz referanslar
+
+Yani varsayılan araştırma biçimi, önce alanı haritalayan bir indeks notu, sonra tekil standart / konu notları üretmektir.
+
 ### İndeks Notu
 Bir alanın veya klasörün giriş kapısıdır.
 
@@ -50,6 +65,9 @@ Görevi:
 - ana başlıkları toplamak
 - alt notlara yol vermek
 - hızlı yön bulma sağlamak
+- geliştirici için başlangıç rotası vermek
+- mümkünse kronolojik akış çıkarmak
+- gerekiyorsa araştırma kümeleri tanımlamak
 
 ### Konu Notu
 Tek bir soruya veya probleme odaklanır.
@@ -79,6 +97,11 @@ Belirli bir döküman, repo veya spesifikasyon için kısa özet notudur.
 - `Kaynak - EIP-4337.md`
 - `Kaynak - Viem Docs.md`
 
+Not:
+- Ethereum araştırmalarında standart notları çoğu zaman doğrudan standardın adıyla tutulur
+- örnek: `ERC-4337.md`, `EIP-1193.md`, `RIP-7560.md`
+- yani `Kaynak - ...` deseni geçerli olsa da, EIP / ERC / RIP notlarında standart kimliği başlık ve dosya adı olarak tercih edilir
+
 ### Açık Sorular Notu
 Henüz netleşmemiş noktaları ve takip edilmesi gereken başlıkları toplar.
 
@@ -98,7 +121,90 @@ Araştırmada mümkünse şu sırayı takip et:
 
 ## 6. Yeni Not Açma Standardı
 
-Her yeni araştırma notunda mümkünse şu iskelet kullanılsın:
+Her yeni araştırma notunda mümkünse şu ilke izlensin:
+
+- eğer konu bir araştırma alanını topluyorsa önce indeks notu aç
+- eğer konu tek bir standart / öneri / spesifikasyon ise doğrudan o standardın notunu aç
+- eğer not mevcut klasör yapısındaki bir alanın parçasıysa, o alanın indeks notuna bağlan
+
+### 6.1 İndeks Notu Varsayılan İskeleti
+
+İndeks notlarında varsayılan yapı mümkün olduğunca şöyle olsun:
+
+```md
+# Alan Adı EIPs / ERCs / RIPs
+
+Kısa açıklama.
+Genel araştırma şeması için: [[Araştırma Planı]]
+
+## Geliştirici İçin Başlangıç Rotası
+
+- en kritik 5-10 not
+
+---
+
+- kronolojik liste
+
+## Araştırma Kümeleri
+
+### Küme Adı
+- ilgili notlar
+```
+
+Kurallar:
+- başta kısa bir alan tanımı olmalı
+- mümkünse `Geliştirici İçin Başlangıç Rotası` bölümü bulunmalı
+- uzun listelerde kronolojik akış tercih edilmeli
+- konu çok genişse `Araştırma Kümeleri` ile tematik gruplama yapılmalı
+
+### 6.2 Standart / Referans Notu Varsayılan İskeleti
+
+Özellikle EIP / ERC / RIP gibi standart notlarında varsayılan yapı şu olmalı:
+
+```md
+# EIP-XXXX
+
+**Yıl:** 20XX
+**Durum:** Taslak / Nihai / Canlı
+**Kategori:** Kısa sınıflandırma
+
+## Özet
+
+1-3 paragrafta ana sonuç.
+
+## Neden Önemli
+
+Bu standardın pratik değeri ne?
+
+## Bağlantılı EIP'ler
+
+- ilgili standartlar
+
+## İlgili Terimler
+
+- [[Sözlük#...]]
+
+## Teknik Notlar
+
+Mimari, akış, sınırlamalar, trade-off'lar.
+
+## Kaynaklar
+
+- resmi kaynaklar
+- implementasyon
+- tartışmalar
+```
+
+Ek kurallar:
+- başlık mümkünse dosya adıyla aynı olmalı
+- standart notlarında `Özet`, `Bağlantılı EIP'ler` ve `Kaynaklar` temel bölümler sayılmalı
+- gerekiyorsa `Neden Önemli`, `İlgili Terimler`, `Temel Bileşenler`, `Nasıl Çalışır`, `Durum`, `Hedef`, `... ile Farkı` gibi ek bölümler eklenmeli
+- her notta tüm bölümler zorunlu değildir; ama not eksik görünmemeli
+- `Açık Sorular` bölümü sadece gerçekten belirsizlik varsa eklenmeli
+
+### 6.3 Serbest Araştırma / Problem Notu İskeleti
+
+Standart dışı konu araştırmalarında aşağıdaki iskelet hâlâ kullanılabilir:
 
 ```md
 # Başlık
@@ -119,10 +225,6 @@ Bu konunun pratik değeri ne?
 
 - ilgili indeks notu
 - ilgili standart / konu notları
-
-## İlgili Terimler
-
-- [[Sözlük#...]]
 
 ## Teknik Notlar
 
@@ -147,7 +249,9 @@ Her notta mümkünse:
 - ilgili standart veya konu notları linklenmeli
 - eğer not bir karşılaştırma ise kıyaslanan iki taraf da doğrudan linklenmeli
 - eğer not bir kaynağa dayanıyorsa, kaynak notu veya doğrudan link bırakılmalı
-- ayrı bir `İlgili Terimler` bloğu yerine, mümkün olduğunda terimler doğrudan cümle içinde bağlanmalı
+- indeks notlarında linkler çoğu zaman satır içinde kısa açıklama ile verilmelidir
+- sözlük bağlantıları mümkün olduğunda cümle içinde doğal biçimde kullanılmalıdır
+- `İlgili Terimler` bölümü gerekli olduğunda kullanılmalı; zorunlu değildir
 
 ## 8. Araştırma Çıktısı Standardı
 
@@ -178,6 +282,12 @@ Karışıklığı azaltmak için not adlarında şu desenler tercih edilsin:
 - `Açık Sorular - ...`
 - `Uygulama - ...`
 
+Ancak şu istisna varsayılan kabul edilir:
+
+- EIP / ERC / RIP araştırmalarında dosya adı doğrudan standart kimliği olmalı
+- örnek: `EIP-1193.md`, `ERC-4337.md`, `RIP-7560.md`
+- bu tip notlarda H1 başlığı da aynı kimliği taşımalı
+
 ## 10. Araştırma Yaparken Karar Ağacı
 
 Yeni bir konu geldiğinde:
@@ -195,6 +305,10 @@ Yeni bir konu geldiğinde:
 - aynı ada sahip standart notu zaten başka klasörde varsa, mümkünse kopya açmak yerine mevcut nota referans verilir
 - sözlük tekildir ve yeni konular geldikçe aynı dosya güncellenir
 - kullanıcı bir yapısal tercih belirttiyse bu tercih sonraki araştırmalarda korunur
+- konu klasörü içinde mümkünse kökte bir indeks notu bulunur
+- standart bazlı notlar mümkünse ilgili konu klasörü altındaki referans alanında gruplanır
+- indeks notu, sadece liste değil, başlangıç rotası ve konu haritası da sunmalıdır
+- yeni araştırmalar, yazım tonu ve bölümleme açısından `Account Abstraction` ve `Wallet & Transaction UX` klasörlerindeki notlara benzemelidir
 
 ## 12. Klasör Bağımsız Kullanım
 
