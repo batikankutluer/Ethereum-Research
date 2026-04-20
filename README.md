@@ -9,6 +9,7 @@ Bu repo, Batıkan Kutluer'in Ethereum üzerine yaptığı araştırmaları içer
 | Konu Başlıkları                                                                                    |
 | :------------------------------------------------------------------------------------------------- |
 | [Sözlük](./Sözlük.md)                                                                              |
+| [Tarihçe](./Tarih%C3%A7e.md)                                                                       |
 | [Araştırma Planı](./Araştırma%20Planı.md)                                                          |
 | [Account Abstraction](./Account%20Abstraction/Account%20Abstraction%20EIPs.md)                     |
 | [Precompiles](./Precompiles/Precompiles%20EIPs.md)                                                 |
