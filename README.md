@@ -13,6 +13,7 @@ Bu repo, Batıkan Kutluer'in Ethereum üzerine yaptığı araştırmaları içer
 | [Araştırma Planı](./Araştırma%20Planı.md)                                                          |
 | [Account Abstraction](./Account%20Abstraction/Account%20Abstraction%20EIPs.md)                     |
 | [Precompiles](./Precompiles/Precompiles%20EIPs.md)                                                 |
+| [Token](./Token/Token%20EIPs%20&%20ERCs.md)                                                        |
 | [Wallet & Transaction UX](./Wallet%20&%20Transaction%20UX/Wallet%20&%20Transaction%20UX%20EIPs.md) |
 
 ## Obsidian Uyumluluğu

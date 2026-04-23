@@ -1,9 +1,12 @@
 # Sözlük
 
-Account Abstraction ekosistemindeki temel terimlerin, geliştirici gözüyle kısa ve net açıklamaları.
+Ethereum araştırmalarındaki temel terimlerin, geliştirici gözüyle kısa ve net açıklamaları.
 İlgili standartlara hızlı gitmek için mümkün olan yerlerde Obsidian bağlantıları eklendi.
 
 ## A
+
+### Allowance
+Bir hesabın, başka bir hesaba veya kontrata kendi token bakiyesinden ne kadar harcama yetkisi verdiğini gösteren değerdir. Özellikle [[Token/EIP, RIP & ERC/ERC-20|ERC-20]] içindeki `approve` / `allowance` modeliyle ilişkilidir.
 
 ### Access List / Erişim Listesi
 Bir işlemin hangi adres ve storage alanlarına erişeceğini önceden beyan eden listedir. Özellikle [[EIP-2930]] ile standartlaşır ve gelişmiş işlem türleri için altyapı sağlar.
@@ -42,6 +45,12 @@ Pairing tabanlı modern kriptografi için kullanılan eğri ailesidir. Ethereum 
 ### CallData
 Bir kontrat çağrısına gönderilen ham girdi verisidir. AA sistemlerinde hem doğrulama hem yürütme aşamasında ne yapılacağını belirleyen temel girdilerden biridir.
 
+### Crosschain Mint / Burn
+Bir token'ın, köprü veya benzeri yetkili bir kontrat tarafından başka zincirde temsil edilmek üzere mint ya da burn edilmesidir. Token tarafındaki minimal arayüz standardizasyonu için [[Token/EIP, RIP & ERC/ERC-7802|ERC-7802]] öne çıkar.
+
+### Custom Error
+Solidity'nin yapılandırılmış hata tipidir; revert string yerine daha ucuz ve daha kolay ayrıştırılabilir hata yüzeyi sunar. Token standartlarında bunun ortak hata dili [[Token/EIP, RIP & ERC/ERC-6093|ERC-6093]] ile tanımlanır.
+
 ### Chain ID
 Bir Ethereum zincirini diğerlerinden ayıran kimlik değeridir. İşlem güvenliği, ağ değiştirme ve cüzdanın doğru ağa bağlanması açısından kritiktir; [[EIP-155]], [[EIP-3085]] ve [[EIP-3326]] ile sık ilişkilidir.
 
@@ -74,6 +83,9 @@ Wallet'ın web sayfasına sunduğu JavaScript arayüzüdür. Dapp bu nesne üzer
 
 ### Factory
 Yeni akıllı hesapları oluşturan kontrattır. [[ERC-4337]] içinde ilk kullanımda hesap oluşturma akışlarında sıkça yer alır.
+
+### Fungible Token
+Her biriminin diğer birimlerle aynı kabul edildiği token türüdür. Bu modelin Ethereum üzerindeki temel standardı [[Token/EIP, RIP & ERC/ERC-20|ERC-20]]'dir.
 
 ### Frame Transaction
 [[EIP-8141]] ile önerilen yeni işlem modelidir. İşlemi doğrulama, ödeme ve yürütme çerçevelerine ayırarak yerleşik hesap soyutlaması hedefler.
@@ -112,15 +124,24 @@ Henüz bloklara girmemiş işlemlerin beklediği ağ havuzudur. [[ERC-4337]] ken
 ### Modüler Hesap
 Hesap mantığının tek parça yerine eklenti, doğrulayıcı ve kanca gibi modüllere ayrıldığı akıllı hesap yaklaşımıdır. [[ERC-6900]] bunun standartlaşma tarafını temsil eder.
 
+### Multi Token Standard
+Tek bir kontrat içinde birden fazla token tipini barındırabilen yaklaşımı ifade eder. Ethereum'daki en yaygın standart karşılığı [[Token/EIP, RIP & ERC/ERC-1155|ERC-1155]]'tir.
+
 ### Multi Injected Wallet
 Aynı tarayıcıda birden fazla wallet uzantısının provider enjekte etmesi durumudur. Bu keşif ve seçim problemini çözmeye çalışan standart [[EIP-6963]]'tür.
 
 ## N
 
+### NFT (Non-Fungible Token)
+Birbirinin yerine geçmeyen, her bir örneği ayrı kimlik taşıyan token türüdür. Ethereum'da bunun temel standart yüzeyi [[Token/EIP, RIP & ERC/ERC-721|ERC-721]] ile yaygınlaştı; daha esnek çoklu varlık modeli ise [[Token/EIP, RIP & ERC/ERC-1155|ERC-1155]] ile geldi.
+
 ### Nonce
 Bir hesabın işlemlerini sıralamak ve tekrar oynatmayı engellemek için kullanılan sayaçtır. AA sistemlerinde klasik tek sayaç modeli yerine daha esnek nonce yapıları görülebilir.
 
 ## O
+
+### Operator
+Bir kullanıcının token'ları üzerinde, belirli kurallar dahilinde onun adına işlem yapabilen yetkili aktördür. ERC-20 allowance modelinden farklı operator yüzeyleri [[Token/EIP, RIP & ERC/ERC-777|ERC-777]] ve [[Token/EIP, RIP & ERC/ERC-6909|ERC-6909]] gibi standartlarda görülür.
 
 ### Opcode / İşlem Kodu
 EVM'in temel komutlarıdır. [[EIP-3074]] ve [[EIP-5003]] gibi bazı öneriler yeni işlem kodları eklemeyi amaçlar.
@@ -155,6 +176,9 @@ Bir imzanın veya işlemin yeniden kullanılarak istenmeyen şekilde tekrar çal
 
 ## S
 
+### Safe Transfer
+Bir token transferinin, alıcı kontratın ilgili receiver arayüzünü gerçekten desteklediği doğrulanarak yapılması yaklaşımıdır. ERC-20 tarafındaki önemli örnekler [[Token/EIP, RIP & ERC/ERC-4524|ERC-4524]], daha erken reaksiyonlar ise [[Token/EIP, RIP & ERC/ERC-223|ERC-223]] ve [[Token/EIP, RIP & ERC/ERC-1363|ERC-1363]] hattında görülebilir.
+
 ### Session Key / Oturum Anahtarı
 Ana anahtardan daha sınırlı yetkilere sahip, kısa ömürlü veya amaca özel anahtardır. Oyun, otomasyon ve uygulama içi deneyimlerde çok değerlidir.
 
@@ -172,6 +196,21 @@ Gazı son kullanıcı yerine uygulamanın, paymaster'ın veya başka bir tarafı
 
 ## T
 
+### Temporary Approval
+Yalnızca tek transaction süresince geçerli olan geçici token harcama yetkisidir. Kalıcı allowance bırakmadan işlem yapmayı hedefleyen standart uzantı [[Token/EIP, RIP & ERC/ERC-7674|ERC-7674]]'tür.
+
+### Token Metadata
+Bir token'ın adı, sembolü, URI'si, görseli veya açıklaması gibi insan dostu tanımlayıcı verileridir. [[Token/EIP, RIP & ERC/ERC-20|ERC-20]], [[Token/EIP, RIP & ERC/ERC-721|ERC-721]] ve [[Token/EIP, RIP & ERC/ERC-1155|ERC-1155]] ekosistemlerinde farklı biçimlerde kullanılır.
+
+### Tokenized Vault
+Temel bir ERC-20 varlığı yöneten ve kullanıcıya bunun üstünde pay temsil eden share token veren vault yapısıdır. Bu modelin standart yüzeyi [[Token/EIP, RIP & ERC/ERC-4626|ERC-4626]] ile tanımlanır.
+
+### Transfer Reference / Odeme Referansi
+Bir token transferine invoice, siparis veya mutabakat baglami eklemek icin tasinan referans verisidir. ERC-20 transferlerine bu katmani ekleyen standart [[Token/EIP, RIP & ERC/ERC-7699|ERC-7699]]'dur.
+
+### Transient Storage / Gecici Depolama
+Yalnizca bir transaction suresince var olan ve transaction sonunda silinen depolama alanidir. Tek seferlik token approval akislari icin [[Token/EIP, RIP & ERC/ERC-7674|ERC-7674]] baglaminda onem kazanir.
+
 ### Type 4 İşlem
 [[EIP-7702]] ile gelen yeni işlem türüdür. EOA'nın bir yetkilendirme listesi üzerinden kod delegasyonu yapmasını sağlar.
 
@@ -179,6 +218,9 @@ Gazı son kullanıcı yerine uygulamanın, paymaster'ın veya başka bir tarafı
 Kullanıcının imzaladığı verinin alan alan anlamlı biçimde tanımlanmasıdır. Wallet'ın daha okunabilir imza ekranı göstermesini sağlar; temel standart [[EIP-712]]'dir.
 
 ## U
+
+### UI Multiplier / Goruntuleme Carpani
+Bir token'in ham bakiyesini degistirmeden, kullaniciya gosterilen miktari olceklendiren carpandir. Ozellikle hisse bolunmesi benzeri durumlar icin [[Token/EIP, RIP & ERC/ERC-8056|ERC-8056]] ile standartlastirilir.
 
 ### UserOperation
 [[ERC-4337]]'de kullanıcının niyetini taşıyan üst seviye işlem nesnesidir. Zincire doğrudan klasik işlem olarak değil, bundler aracılığıyla gider.
